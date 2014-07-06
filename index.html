@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			@font-face {
+			    font-family: 'PauzaFOT-Bold';
+			    src: url('font/PauzaFOT-Bold.eot');
+			    src: url('font/PauzaFOT-Bold.eot?#iefix') format('embedded-opentype'),
+			         url('font/PauzaFOT-Bold.woff') format('woff'),
+			         url('font/PauzaFOT-Bold.ttf') format('truetype'),
+			         url('font/PauzaFOT-Bold.svg#AftaserifRegular') format('svg');
+			    font-weight: normal;
+			    font-style: normal;
+
+			}
+
+			@font-face {
+			    font-family: 'PauzaFOT-Light';
+			    src: url('font/PauzaFOT-Light.eot');
+			    src: url('font/PauzaFOT-Light.eot?#iefix') format('embedded-opentype'),
+			         url('font/PauzaFOT-Light.woff') format('woff'),
+			         url('font/PauzaFOT-Light.ttf') format('truetype'),
+			         url('font/PauzaFOT-Light.svg#AftaserifRegular') format('svg');
+			    font-weight: normal;
+			    font-style: normal;
+
+			}
+
+			div.container{
+				font-family: 'PauzaFOT-Light';
+				background-color: #f8981d;
+				height: 300px;
+				width: 300px;
+				border-radius: 15px;
+				padding: 15px;
+				overflow: hidden;
+				color: white;
+			}
+			div.container .bold {
+				font-family: 'PauzaFOT-Bold';
+			}
+			.container div.text > h1 {
+				color: white;
+				text-align: center;
+				margin: 0px;
+				font-size: 40px;
+			}
+			.container .formTable {
+				direction: rtl;
+				width: 95%;
+			}
+			.container .formTable input {
+				width: 90%;
+				border-radius: 10px;
+				border: solid 0px;
+				padding: 6px;
+			}
+
+			.container .label{
+				font-size: 20px;
+				font-weight: bold;
+			}
+			.container .send{
+				margin-top: 5px;
+			}
+			.container #loader {
+				float: right;
+				margin-top: 10px;
+				display: none;
+			}
+			.container #success {
+				display: none;
+				text-align: center;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img src="img/logo.png" alt="shl" class="logo">
+
+			<div class="text">
+				<h1 class="bold">כל מה שצריך</h1>
+				<h1><span class="bold">לדעת</span> בשביל</h1>
+				<h1>לשמור על לב בריא</h1>
+			</div>
+				
+			<div class="formCont" id="formCont">
+				<form name="shlForm">
+					<table class="formTable">
+						<tr class="row">
+							<td class="col"><span class="label">שם</span></td>
+							<td class="col"><input type="text" id="name" ></td>
+						</tr>
+						<tr class="row">
+							<td class="col"><span class="label">עיר</span></td>
+							<td class="col"><input type="text" id="city" required></td>
+						</tr>
+						<tr class="row">
+							<td class="col"><span class="label">טלפון</span></td>
+							<td class="col"><input type="text" id="phone" required></td>
+						</tr>
+					</table>
+					<img src="img/send.png" class="send" onclick="SHL.send('shlForm','http://demo2005784.mockable.io/test')">
+					<img src="img/ajax-loader.gif" alt="Loading..." id="loader">
+				</form>
+			</div>
+			<h1 id="success">הטופס נשלח בהצלחה</h1>
+		</div>
+
+	<script>
+
+	var xmlhttp;
+	if (window.XMLHttpRequest){
+	xmlhttp=new XMLHttpRequest(); // code for IE7+, Firefox, Chrome, Opera, Safari
+	} else {
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); // code for IE6, IE5
+	}
+
+	var SHL = {};
+	SHL.loader = document.getElementById('loader');
+	SHL.formCont = document.getElementById('formCont');
+	SHL.success = document.getElementById('success');
+
+	SHL.serialize = function(obj) {
+		var str = [];
+		for(var p in obj) {
+			if (obj.hasOwnProperty(p)) {
+				str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+			};
+		};
+		return str.join("&");
+	};
+
+
+	SHL.send = function (form,url){
+		
+		var data ={};
+	
+		if(typeof SHL.status === 'undefined'){
+			SHL.status = {
+				lock : false
+			};
+		};
+		
+		var elements = document.forms[form].elements;
+
+		for (i=0; i<elements.length; i++){
+			data[elements[i].id]=elements[i].value;
+		}
+
+		if (SHL.valid(elements) && !SHL.status.lock) {
+			SHL.loader.style.display ='block';
+			xmlhttp.open("POST",url,true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send(SHL.serialize(data));
+		}
+	}
+
+	SHL.valid = function (elements){
+		for (i=0; i<elements.length; i++){
+			if  (elements[i].attributes[elements[i].attributes.length-1].name === 'required') {
+				if (elements[i].value === '') {
+					alert (elements[i].id + ' is empty!');
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			SHL.loader.style.display ='none';
+			var res = JSON.parse (xmlhttp.responseText);
+			console.log (res);
+
+			SHL.formCont.style.display ='none';
+			SHL.success.style.display ='block';
+
+			SHL.status = {
+				lock : true
+			};
+
+		};
+	};
+	</script>
+	</body>
+</html>

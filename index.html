@@ -72,6 +72,10 @@
 				display: none;
 				text-align: center;
 			}
+			.container #msg {
+				float: right;
+				margin-top: 5px;
+			}
 
 		</style>
 	</head>
@@ -89,20 +93,21 @@
 				<form name="shlForm">
 					<table class="formTable">
 						<tr class="row">
-							<td class="col"><span class="label">שם</span></td>
-							<td class="col"><input type="text" id="name" ></td>
+							<td class="col"><span class="label" >שם</span></td>
+							<td class="col"><input type="text" id="name" placeholder="שם" ></td>
 						</tr>
 						<tr class="row">
 							<td class="col"><span class="label">עיר</span></td>
-							<td class="col"><input type="text" id="city" required></td>
+							<td class="col"><input type="text" id="city" placeholder="עיר" required></td>
 						</tr>
 						<tr class="row">
 							<td class="col"><span class="label">טלפון</span></td>
-							<td class="col"><input type="text" id="phone" required></td>
+							<td class="col"><input type="text" id="phone" placeholder="טלפון" required></td>
 						</tr>
 					</table>
 					<img src="img/send.png" class="send" onclick="SHL.send('shlForm','http://demo2005784.mockable.io/test')">
 					<img src="img/ajax-loader.gif" alt="Loading..." id="loader">
+					<span id="msg"></span>
 				</form>
 			</div>
 			<h1 id="success">הטופס נשלח בהצלחה</h1>
@@ -119,8 +124,7 @@
 
 	var SHL = {};
 	SHL.loader = document.getElementById('loader');
-	SHL.formCont = document.getElementById('formCont');
-	SHL.success = document.getElementById('success');
+
 
 	SHL.serialize = function(obj) {
 		var str = [];
@@ -158,20 +162,25 @@
 	}
 
 	SHL.valid = function (elements){
+		SHL.msg = document.getElementById('msg');
 		for (i=0; i<elements.length; i++){
 			if  (elements[i].attributes[elements[i].attributes.length-1].name === 'required') {
 				if (elements[i].value === '') {
-					alert (elements[i].id + ' is empty!');
+					SHL.msg.innerHTML =  '.' +elements[i].attributes.placeholder.value + ' הוא שדה חובה';
 					return false;
 				}
 			}
 		}
+		SHL.msg.style.display ='none';
 		return true;
 	}
 
 	xmlhttp.onreadystatechange=function(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
+			SHL.formCont = document.getElementById('formCont');
+			SHL.success = document.getElementById('success');
+
 			SHL.loader.style.display ='none';
 			var res = JSON.parse (xmlhttp.responseText);
 			console.log (res);

@@ -47,10 +47,12 @@ SHL.send = function (form,url){
 SHL.valid = function (elements){
 	SHL.msg = document.getElementById('msg');
 	for (i=0; i<elements.length; i++){
-		if  (elements[i].attributes[elements[i].attributes.length-1].name === 'required') {
-			if (elements[i].value === '') {
-				SHL.msg.innerHTML =  '.' +elements[i].attributes.placeholder.value + ' הוא שדה חובה';
-				return false;
+		for (a=0; a<elements[i].attributes.length; a++){
+			if  (elements[i].attributes[a].name === 'required') {
+				if (elements[i].value === '') {
+					SHL.msg.innerHTML =  elements[i].attributes.placeholder.value + ' הוא שדה חובה';
+					return false;
+				}
 			}
 		}
 	}

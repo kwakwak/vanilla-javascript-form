@@ -41,11 +41,7 @@ div.container .bold {
 .container .send{
 
 }
-.container #loader {
-	float: right;
-	margin-top: 10px;
-	display: none;
-}
+
 .container #success {
 	display: none;
 	text-align: center;

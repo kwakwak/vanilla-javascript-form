@@ -46,11 +46,7 @@ div.container .bold {
 	margin-bottom: 4px;
 	cursor: pointer;
 }
-.container #loader {
-	float: right;
-	margin-top: 10px;
-	display: none;
-}
+
 .container #success {
 	display: none;
 	text-align: center;

@@ -29,7 +29,12 @@
 			         url('font/PauzaFOT-Light.svg#AftaserifRegular') format('svg');
 			    font-weight: normal;
 			    font-style: normal;
-
+			}
+			.container #loader {
+				position: fixed;
+				top: 4px;
+				left: 4px;
+				display: none;
 			}
 
 		</style>

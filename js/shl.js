@@ -51,7 +51,7 @@ SHL.valid = function (elements){
 			if  (elements[i].attributes[a].name === 'required') {
 				if (elements[i].value === '') {
 					//SHL.msg.innerHTML =  elements[i].attributes.placeholder.value + ' הוא שדה חובה';
-					alert (elements[i].attributes.placeholder.value + ' הוא שדה חובה');
+					alert (elements[i].attributes.label.value + ' הוא שדה חובה');
 					return false;
 				}
 			}

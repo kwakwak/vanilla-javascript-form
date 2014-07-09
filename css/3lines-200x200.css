@@ -1,45 +1,46 @@
+
 div.container{
 	font-family: 'PauzaFOT-Light';
 	background-color: #f8981d;
 	height: 200px;
 	width: 200px;
-	
-	padding: 3px;
+	padding: 15px;
 	overflow: hidden;
 	color: white;
+	direction: rtl;
+	border-radius: 15px;
 }
 div.container .bold {
 	font-family: 'PauzaFOT-Bold';
 }
 .container div.text > h1 {
+	color: white;
 	text-align: right;
 	margin: 0px;
-	font-size: 15px;
-	margin-right: 50px;
+	font-size: 24px;
 }
 .container .formTable {
 	direction: rtl;
-	width: 95%;
-	margin-top: 10px;
+	width: 100%;
 }
 .container .formTable input {
 	width: 100%;
 	border-radius: 10px;
 	border: solid 0px;
-
-	background-color: #cccccc;
+	padding: 2px;
 }
 .container .formTable input:focus {
 	 outline: 0;
 }
 
 .container .label{
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 }
 .container .send{
-	width: 60px;
-	margin-bottom: 10px;
+	width: 100px;
+	margin: 5px auto;
+	display: block;
 	cursor: pointer;
 }
 
@@ -51,26 +52,15 @@ div.container .bold {
 	float: right;
 	margin-top: 5px;
 }
-.container .inner {
-	background-color: #f9f9f9;
-	padding: 10px;
-	border-radius: 10px;
-	color: #4d4d4d;
-	height: 193px;
-	background-color: #f9f9f9;
-	background-image: url("../img/man.png");
-	background-repeat: no-repeat;
-	background-position: 10px -50px;
-	direction: rtl;
+.container .text{
+	margin-left: 30px;
+	margin-top: -8px;
+}
+.container .formCont{
+	width: 160px;
+
 }
 .container .logo {
 	position: absolute;
 	left: 20px;
-}
-.container .text{
-	margin-top: 35px;
-}
-.container .formCont{
-	width: 110px;
-	display: inline-block;
 }

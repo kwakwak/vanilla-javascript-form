@@ -89,15 +89,15 @@
 						<table class="formTable">
 							<tr class="row">
 								<td class="col"><span class="label" >שם</span></td>
-								<td class="col"><input required type="text" id="name" placeholder="שם" ></td>
+								<td class="col"><input required type="text" id="name" label="שם" required></td>
 							</tr>
 							<tr class="row">
 								<td class="col"><span class="label">עיר</span></td>
-								<td class="col"><input type="text" id="city" required placeholder="עיר" ></td>
+								<td class="col"><input type="text" id="city" required label="עיר" ></td>
 							</tr>
 							<tr class="row">
 								<td class="col"><span class="label">טלפון</span></td>
-								<td class="col"><input type="text" id="phone" placeholder="טלפון" required></td>
+								<td class="col"><input type="text" id="phone" label="טלפון" required></td>
 							</tr>
 						</table>
 						
@@ -105,7 +105,7 @@
 						<span id="msg"></span>
 					</form>
 				</div>
-				<img src="img/sendBlack.png" id="sendButton" class="send" onclick="SHL.send('shlForm','http://demo2005784.mockable.io/test')">
+				<img src="img/sendBlack.png" id="sendButton" class="send" onclick="SHL.send('shlForm','sendEmail.php')">
 				<h1 id="success">הטופס נשלח בהצלחה</h1>
 			</div>
 		</div>

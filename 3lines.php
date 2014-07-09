@@ -31,62 +31,42 @@
 			    font-style: normal;
 
 			}
-
-			div.container{
-				font-family: 'PauzaFOT-Light';
-				background-color: #f8981d;
-				height: 300px;
-				width: 300px;
-				border-radius: 15px;
-				padding: 15px;
-				overflow: hidden;
-				color: white;
-			}
-			div.container .bold {
-				font-family: 'PauzaFOT-Bold';
-			}
-			.container div.text > h1 {
-				color: white;
-				text-align: center;
-				margin: 0px;
-				font-size: 35px;
-			}
-			.container .formTable {
-				direction: rtl;
-				width: 95%;
-			}
-			.container .formTable input {
-				width: 90%;
-				border-radius: 10px;
-				border: solid 0px;
-				padding: 2px;
-			}
-			.container .formTable input:focus {
-				 outline: 0;
-			}
-
-			.container .label{
-				font-size: 20px;
-				font-weight: bold;
-			}
-			.container .send{
-				margin-top: 5px;
-			}
 			.container #loader {
-				float: right;
-				margin-top: 10px;
+				position: fixed;
+				top: 4px;
+				left: 4px;
 				display: none;
 			}
-			.container #success {
-				display: none;
-				text-align: center;
-			}
-			.container #msg {
-				float: right;
-				margin-top: 5px;
-			}
-
 		</style>
+		<?php 
+		if (isset($_GET["size"])){
+			switch ($_GET["size"]) {
+		    case "300x300":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/3lines-300x300.css'>");
+		        break;
+		    case "300x250":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/3lines-300x250.css'>");
+		        break;
+		    case "300x200":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/3lines-300x200.css'>");
+		        break;
+		    case "250x250":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/3lines-250x250.css'>");
+		        break;
+		    case "250x200":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/3lines-250x200.css'>");
+		        break;
+		    case "200x200":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/3lines-200x200.css'>");
+		        break;  
+
+	        default:
+	        	echo( "<link rel='stylesheet' type='text/css' href='css/3lines-300x300.css'>");
+			} 
+		}	else {
+			echo( "<link rel='stylesheet' type='text/css' href='css/3lines-300x300.css'>");
+		}
+		?> 
 	</head>
 	<body>
 		<div class="container">
@@ -103,25 +83,27 @@
 					<table class="formTable">
 						<tr class="row">
 							<td class="col"><span class="label" >שם</span></td>
-							<td class="col"><input type="text" id="name" placeholder="שם" ></td>
+							<td class="col"><input type="text" id="fname" label="שם" required></td>
 						</tr>
 						<tr class="row">
 							<td class="col"><span class="label">עיר</span></td>
-							<td class="col"><input type="text" id="city" placeholder="עיר" required></td>
+							<td class="col"><input type="text" id="city" label="עיר" required></td>
 						</tr>
 						<tr class="row">
 							<td class="col"><span class="label">טלפון</span></td>
-							<td class="col"><input type="text" id="phone" placeholder="טלפון" required></td>
+							<td class="col"><input type="text" id="phone" label="טלפון" required></td>
 						</tr>
 					</table>
-					<img src="img/send.png" class="send" onclick="SHL.send('shlForm','http://demo2005784.mockable.io/test')">
-					<img src="img/ajax-loader.gif" alt="Loading..." id="loader">
-					<span id="msg"></span>
 				</form>
 			</div>
+			<img src="img/send.png" class="send" id="sendButton" onclick="SHL.send('shlForm','sendEmail.php')">
+			<img src="img/ajax-loader.gif" alt="Loading..." id="loader">
+			<span id="msg"></span>
 			<h1 id="success">הטופס נשלח בהצלחה</h1>
+			
+			
 		</div>
-
+		<h1 id="success">הטופס נשלח בהצלחה</h1>
 	<script type="text/javascript" src="js/shl.js"></script>
 	</body>
 </html>

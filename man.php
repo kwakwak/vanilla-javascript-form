@@ -2,6 +2,12 @@
 	<head>
 		<meta charset="utf-8">
 		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body{
+				margin: 0px;
+			}
 			@font-face {
 			    font-family: 'PauzaFOT-Bold';
 			    src: url('font/PauzaFOT-Bold.eot');
@@ -26,82 +32,37 @@
 
 			}
 
-			div.container{
-				font-family: 'PauzaFOT-Light';
-				background-color: #f8981d;
-				height: 250px;
-				width: 300px;
-				
-				padding: 15px;
-				overflow: hidden;
-				color: white;
-			}
-			div.container .bold {
-				font-family: 'PauzaFOT-Bold';
-			}
-			.container div.text > h1 {
-				text-align: right;
-				margin: 0px;
-				font-size: 25px;
-				margin-right: 90px;
-
-			}
-			.container .formTable {
-				direction: rtl;
-				width: 95%;
-				margin-top: 3px;
-			}
-			.container .formTable input {
-				width: 90%;
-				border-radius: 10px;
-				border: solid 0px;
-				background-color: #cccccc;
-			}
-			.container .formTable input:focus {
-				 outline: 0;
-			}
-
-			.container .label{
-				font-size: 20px;
-				font-weight: bold;
-			}
-			.container .send{
-				margin-top: 5px;
-				cursor: pointer;
-			}
-			.container #loader {
-				float: right;
-				margin-top: 10px;
-				display: none;
-			}
-			.container #success {
-				display: none;
-				text-align: center;
-			}
-			.container #msg {
-				float: right;
-				margin-top: 5px;
-			}
-			.container .inner {
-				background-color: #f9f9f9;
-				padding: 10px;
-				border-radius: 10px;
-				color: #4d4d4d;
-				height: 230px;
-				background-color: #f9f9f9;
-				background-image: url("img/man.png");
-				background-repeat: no-repeat;
-				background-position-x: right;
-				background-position-y: -20px;
-			}
-			.container .logo {
-				position: absolute;
-			}
-			.container .text{
-				margin-top: 20px;
-			}
-
 		</style>
+		<?php 
+		if (isset($_GET["size"])){
+			switch ($_GET["size"]) {
+		    case "300x300":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/man-300x300.css'>");
+		        break;
+		    case "300x250":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/man-300x250.css'>");
+		        break;
+		    case "300x200":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/man-300x200.css'>");
+		        break;
+		    case "250x250":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/man-250x250.css'>");
+		        break;
+		    case "250x200":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/man-250x200.css'>");
+		        break;
+		    case "200x200":
+		        echo( "<link rel='stylesheet' type='text/css' href='css/man-200x200.css'>");
+		        break;  
+
+	        default:
+	        	echo( "<link rel='stylesheet' type='text/css' href='css/man-300x300.css'>");
+			} 
+		}	else {
+			echo( "<link rel='stylesheet' type='text/css' href='css/man-300x300.css'>");
+		}
+		?> 
+
 	</head>
 	<body>
 		<div class="container">
@@ -117,27 +78,29 @@
 					<h1>כבר עכשיו</h1>
 				</div>
 					
+
 				<div class="formCont" id="formCont">
 					<form name="shlForm">
 						<table class="formTable">
 							<tr class="row">
 								<td class="col"><span class="label" >שם</span></td>
-								<td class="col"><input type="text" id="name" placeholder="שם" ></td>
+								<td class="col"><input required type="text" id="name" placeholder="שם" ></td>
 							</tr>
 							<tr class="row">
 								<td class="col"><span class="label">עיר</span></td>
-								<td class="col"><input type="text" id="city" placeholder="עיר" required></td>
+								<td class="col"><input type="text" id="city" required placeholder="עיר" ></td>
 							</tr>
 							<tr class="row">
 								<td class="col"><span class="label">טלפון</span></td>
 								<td class="col"><input type="text" id="phone" placeholder="טלפון" required></td>
 							</tr>
 						</table>
-						<img src="img/sendBlack.png" class="send" onclick="SHL.send('shlForm','http://demo2005784.mockable.io/test')">
+						
 						<img src="img/ajax-loaderBlack.gif" alt="Loading..." id="loader">
 						<span id="msg"></span>
 					</form>
 				</div>
+				<img src="img/sendBlack.png" id="sendButton" class="send" onclick="SHL.send('shlForm','http://demo2005784.mockable.io/test')">
 				<h1 id="success">הטופס נשלח בהצלחה</h1>
 			</div>
 		</div>

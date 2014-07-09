@@ -50,7 +50,8 @@ SHL.valid = function (elements){
 		for (a=0; a<elements[i].attributes.length; a++){
 			if  (elements[i].attributes[a].name === 'required') {
 				if (elements[i].value === '') {
-					SHL.msg.innerHTML =  elements[i].attributes.placeholder.value + ' הוא שדה חובה';
+					//SHL.msg.innerHTML =  elements[i].attributes.placeholder.value + ' הוא שדה חובה';
+					alert (elements[i].attributes.placeholder.value + ' הוא שדה חובה');
 					return false;
 				}
 			}
@@ -64,6 +65,7 @@ xmlhttp.onreadystatechange=function(){
 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	{
 		SHL.formCont = document.getElementById('formCont');
+		SHL.sendButton = document.getElementById('sendButton');
 		SHL.success = document.getElementById('success');
 
 		SHL.loader.style.display ='none';
@@ -71,6 +73,7 @@ xmlhttp.onreadystatechange=function(){
 		console.log (res);
 
 		SHL.formCont.style.display ='none';
+		SHL.sendButton.style.display ='none';
 		SHL.success.style.display ='block';
 
 		SHL.status = {

@@ -1,0 +1,75 @@
+div.container{
+	font-family: 'PauzaFOT-Light';
+	background-color: #f8981d;
+	height: 300px;
+	width: 300px;
+	
+	padding: 15px;
+	overflow: hidden;
+	color: white;
+}
+div.container .bold {
+	font-family: 'PauzaFOT-Bold';
+}
+.container div.text > h1 {
+	text-align: right;
+	margin: 0px;
+	font-size: 22px;
+	margin-right: 87px;
+
+}
+.container .formTable {
+	direction: rtl;
+	width: 95%;
+	margin-top: 10px;
+}
+.container .formTable input {
+	width: 90%;
+	border-radius: 10px;
+	border: solid 0px;
+	padding: 2px;
+	background-color: #cccccc;
+}
+.container .formTable input:focus {
+	 outline: 0;
+}
+
+.container .label{
+	font-size: 20px;
+	font-weight: bold;
+}
+.container .send{
+	margin-top: 5px;
+	cursor: pointer;
+}
+.container #loader {
+	float: right;
+	margin-top: 10px;
+	display: none;
+}
+.container #success {
+	display: none;
+	text-align: center;
+}
+.container #msg {
+	float: right;
+	margin-top: 5px;
+}
+.container .inner {
+	background-color: #f9f9f9;
+	padding: 10px;
+	border-radius: 10px;
+	color: #4d4d4d;
+	height: 270px;
+	background-color: #f9f9f9;
+	background-image: url("../img/man.png");
+	background-repeat: no-repeat;
+	background-position: right -10px;
+
+}
+.container .logo {
+	position: absolute;
+}
+.container .text{
+	margin-top: 40px;
+}

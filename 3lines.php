@@ -98,12 +98,9 @@
 			</div>
 			<img src="img/send.png" class="send" id="sendButton" onclick="SHL.send('shlForm','sendEmail.php')">
 			<img src="img/ajax-loader.gif" alt="Loading..." id="loader">
-			<span id="msg"></span>
 			<h1 id="success">הטופס נשלח בהצלחה</h1>
-			
-			
 		</div>
-		<h1 id="success">הטופס נשלח בהצלחה</h1>
+
 	<script type="text/javascript" src="js/shl.js"></script>
 	</body>
 </html>

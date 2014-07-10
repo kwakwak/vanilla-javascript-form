@@ -89,7 +89,7 @@
 						<table class="formTable">
 							<tr class="row">
 								<td class="col"><span class="label" >שם</span></td>
-								<td class="col"><input required type="text" id="name" label="שם" required></td>
+								<td class="col"><input required type="text" id="fname" label="שם" required></td>
 							</tr>
 							<tr class="row">
 								<td class="col"><span class="label">עיר</span></td>

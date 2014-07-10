@@ -19,6 +19,8 @@ SHL.serialize = function(obj) {
 	return str.join("&");
 };
 
+//console.log ("parent url: " + window.parent.location);
+//console.log ("iframe url: " + window.location);
 
 SHL.send = function (form,url){
 
@@ -36,6 +38,8 @@ SHL.send = function (form,url){
 		data[elements[i].id]=elements[i].value;
 	}
 
+	data.url = window.parent.location;
+
 	if (SHL.valid(elements) && !SHL.status.lock) {
 		SHL.loader.style.display ='block';
 		xmlhttp.open("POST",url,true);
@@ -45,7 +49,7 @@ SHL.send = function (form,url){
 }
 
 SHL.valid = function (elements){
-	SHL.msg = document.getElementById('msg');
+	//SHL.msg = document.getElementById('msg');
 	for (i=0; i<elements.length; i++){
 		for (a=0; a<elements[i].attributes.length; a++){
 			if  (elements[i].attributes[a].name === 'required') {
@@ -57,7 +61,7 @@ SHL.valid = function (elements){
 			}
 		}
 	}
-	SHL.msg.style.display ='none';
+	//SHL.msg.style.display ='none';
 	return true;
 }
 
@@ -69,8 +73,8 @@ xmlhttp.onreadystatechange=function(){
 		SHL.success = document.getElementById('success');
 
 		SHL.loader.style.display ='none';
-		var res = JSON.parse (xmlhttp.responseText);
-		console.log (res);
+		
+		console.log (xmlhttp.responseText);
 
 		SHL.formCont.style.display ='none';
 		SHL.sendButton.style.display ='none';

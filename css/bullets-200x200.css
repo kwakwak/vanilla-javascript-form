@@ -1,0 +1,92 @@
+div.container{
+	font-family: 'PauzaFOT-Light';
+	background-color: #f8981d;
+	height: 200px;
+	width: 200px;
+	border-radius: 15px;
+	padding: 15px;
+	overflow: hidden;
+	color: white;
+	direction: rtl;
+}
+div.container .bold {
+	font-family: 'PauzaFOT-Bold';
+}
+.container .text{
+
+}
+.container div.text > h1 {
+	color: white;
+	text-align: right;
+	margin: 0px;
+	font-size: 17px;
+	line-height: 18px;
+}
+.container .formTable {
+	direction: rtl;
+	width: 100%;
+	border-spacing: 0px;
+}
+
+.container .formTable tr td {
+	height:0px;
+}
+
+.container .formTable input {
+	width: 100%;
+	border-radius: 10px;
+	border: solid 0px;
+	margin: 0px;
+
+}
+.container .formTable input:focus {
+	 outline: 0;
+}
+
+.container .label{
+	font-size: 16px;
+	font-weight: bold;
+}
+.container .send{
+	margin-top: 5px;
+}
+
+.container #success {
+	display: none;
+	text-align: center;
+}
+.container #msg {
+	float: right;
+	margin-top: 5px;
+}
+
+.container ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    direction: rtl;
+}
+
+.container ul li {
+	background-image: url(../img/bullet.png);
+	background-repeat: no-repeat;
+	background-position: right 0px;
+	padding-right: 20px;
+	direction: rtl; 
+	font-size: 16px;
+	line-height: 16px;
+}
+.container .logo {
+	position: absolute;
+	left: 20px;
+}
+.container .formCont{
+	width: 165px;
+	display: inline-block;
+}
+.container .send{
+	width: 80px;
+	margin: -3px auto;
+	display: block;
+	cursor: pointer;
+}
